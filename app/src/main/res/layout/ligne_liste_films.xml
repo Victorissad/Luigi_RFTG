@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/retro_card_background"
+    android:padding="14dp"
+    android:gravity="center_vertical"
+    android:descendantFocusability="blocksDescendants">
+
+    <!-- Image du film (placeholder) avec bordure néon -->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp">
+
+        <ImageView
+            android:id="@+id/imageFilm"
+            android:layout_width="60dp"
+            android:layout_height="90dp"
+            android:background="@color/retro_purple"
+            android:scaleType="centerCrop"
+            android:clickable="false"
+            android:focusable="false"/>
+
+        <!-- Bordure néon pour l'image -->
+        <View
+            android:layout_width="60dp"
+            android:layout_height="90dp"
+            android:background="@android:color/transparent"
+            android:outlineProvider="bounds"/>
+    </FrameLayout>
+
+    <!-- Informations du film -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:clickable="false"
+        android:focusable="false">
+
+        <TextView
+            android:id="@+id/textNomFilm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="L'Odyssée"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/retro_cyan"
+            android:layout_marginBottom="6dp"
+            android:clickable="false"
+            android:focusable="false"/>
+
+        <TextView
+            android:id="@+id/textTypeFilm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📼 DVD"
+            android:textSize="12sp"
+            android:textColor="@color/retro_yellow"
+            android:clickable="false"
+            android:focusable="false"/>
+
+    </LinearLayout>
+
+    <!-- Boutons Détail et Ajouter -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/btnDetail"
+            android:layout_width="80dp"
+            android:layout_height="32dp"
+            android:text="DÉTAIL"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/retro_button_gradient"/>
+
+        <Button
+            android:id="@+id/btnAjouter"
+            android:layout_width="80dp"
+            android:layout_height="32dp"
+            android:text="AJOUTER"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:background="@drawable/retro_button_gradient"/>
+
+    </LinearLayout>
+
+</LinearLayout>

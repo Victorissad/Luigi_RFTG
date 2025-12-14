@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Couleurs de base -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Palette rétro années 80 -->
+    <color name="retro_purple">#9D4EDD</color>        <!-- Violet néon -->
+    <color name="retro_pink">#FF006E</color>          <!-- Rose vif -->
+    <color name="retro_cyan">#00D9FF</color>          <!-- Cyan électrique -->
+    <color name="retro_orange">#FF9E00</color>        <!-- Orange rétro -->
+    <color name="retro_blue">#3A0CA3</color>          <!-- Bleu profond -->
+    <color name="retro_dark">#1A1A2E</color>          <!-- Fond sombre -->
+    <color name="retro_light">#16213E</color>         <!-- Fond secondaire -->
+    <color name="retro_yellow">#FFD60A</color>        <!-- Jaune rétro -->
+
+    <!-- Couleurs fonctionnelles -->
+    <color name="primary_color">#9D4EDD</color>       <!-- Violet principal -->
+    <color name="secondary_color">#FF006E</color>     <!-- Rose accent -->
+    <color name="background_dark">#1A1A2E</color>     <!-- Fond principal -->
+    <color name="card_background">#16213E</color>     <!-- Fond des cartes -->
+    <color name="text_primary">#FFFFFF</color>        <!-- Texte principal (blanc pour lisibilité) -->
+    <color name="text_secondary">#00D9FF</color>      <!-- Texte secondaire (cyan) -->
+    <color name="button_gradient_start">#9D4EDD</color>
+    <color name="button_gradient_end">#FF006E</color>
+</resources>

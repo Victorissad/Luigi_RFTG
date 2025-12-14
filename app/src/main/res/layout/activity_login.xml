@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="@color/background_dark">
+
+    <!-- Logo ou titre de l'application - Style rétro 80s -->
+    <TextView
+        android:id="@+id/tvTitreApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:shadowColor="@color/retro_pink"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="8"
+        android:text="🎬 RFTG FILMS"
+        android:textColor="@color/retro_cyan"
+        android:textSize="42sp"
+        android:textStyle="bold" />
+
+    <!-- Champ email -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EMAIL"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/retro_cyan"
+        android:letterSpacing="0.1"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="jean@test.com"
+        android:inputType="textEmailAddress"
+        android:padding="16dp"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/retro_cyan"
+        android:background="@drawable/retro_edittext_background"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Champ mot de passe -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MOT DE PASSE"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/retro_cyan"
+        android:letterSpacing="0.1"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="••••••••"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/retro_cyan"
+        android:background="@drawable/retro_edittext_background"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Bouton de connexion avec gradient rétro -->
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="▶ CONNEXION"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.1"
+        android:padding="18dp"
+        android:background="@drawable/retro_button_gradient"
+        android:textColor="@color/white" />
+
+    <!-- ProgressBar pour le chargement -->
+    <ProgressBar
+        android:id="@+id/progressBarLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:indeterminateTint="@color/retro_cyan"
+        android:visibility="gone" />
+
+    <!-- Message d'erreur -->
+    <TextView
+        android:id="@+id/tvErreurLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/retro_pink"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</LinearLayout>

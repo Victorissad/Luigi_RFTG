@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./gradlew:*)",
+      "Bash(where:*)",
+      "Bash(taskkill:*)",
+      "Bash(Stop-Process -Id 2092 -Force)",
+      "Bash(\"C:\\Users\\Victor\\AppData\\Local\\Programs\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin\\java.exe\" -jar \"C:\\Users\\Victor\\BTS_SIO_RFTG-2025-2026_BackEnd\\toad-backend\\target\\toad-backend-0.0.1-SNAPSHOT.jar\")",
+      "Bash(Remove-Item -Recurse -Force .git)",
+      "Bash(git add:*)"
+    ]
+  }
+}
