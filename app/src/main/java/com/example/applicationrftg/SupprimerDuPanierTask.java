@@ -14,7 +14,6 @@ public class SupprimerDuPanierTask extends AsyncTask<Void, Void, String> {
 
     private PanierActivity activity;
     private int rentalId;
-    private static final String JWT = "eyJhbGciOiJIUzI1NiJ9.e30.jg2m4pLbAlZv1h5uPQ6fU38X23g65eXMX8q-SXuIPDg";
 
     public SupprimerDuPanierTask(PanierActivity activity, int rentalId) {
         this.activity = activity;
@@ -30,7 +29,7 @@ public class SupprimerDuPanierTask extends AsyncTask<Void, Void, String> {
             urlConnection.setRequestMethod("DELETE");
             urlConnection.setRequestProperty("Content-Type", "application/json");
             urlConnection.setRequestProperty("Accept", "application/json");
-            urlConnection.setRequestProperty("Authorization", "Bearer " + JWT);
+            urlConnection.setRequestProperty("Authorization", "Bearer " + UrlManager.getJwtToken());
             urlConnection.setRequestProperty("User-Agent", System.getProperty("http.agent"));
             urlConnection.setConnectTimeout(5000);
             urlConnection.setReadTimeout(5000);

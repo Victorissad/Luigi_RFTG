@@ -35,6 +35,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // Initialiser le UrlManager (JWT depuis strings.xml)
+        UrlManager.init(this);
+
         // Initialiser le SessionManager
         sessionManager = new SessionManager(this);
 

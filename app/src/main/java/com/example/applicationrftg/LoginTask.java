@@ -27,12 +27,11 @@ public class LoginTask extends AsyncTask<URL, Integer, String> {
 
         try {
             // Configurer la connexion
-            String jwt = "eyJhbGciOiJIUzI1NiJ9.e30.jg2m4pLbAlZv1h5uPQ6fU38X23g65eXMX8q-SXuIPDg";
             urlConnection = (HttpURLConnection) urlAAppeler.openConnection();
             urlConnection.setRequestMethod("POST");
             urlConnection.setRequestProperty("Content-Type", "application/json");
             urlConnection.setRequestProperty("Accept", "application/json");
-            urlConnection.setRequestProperty("Authorization", "Bearer " + jwt);
+            urlConnection.setRequestProperty("Authorization", "Bearer " + UrlManager.getJwtToken());
             urlConnection.setRequestProperty("User-Agent", System.getProperty("http.agent"));
             urlConnection.setDoOutput(true);
             urlConnection.setConnectTimeout(5000);

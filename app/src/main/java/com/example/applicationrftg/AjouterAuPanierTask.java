@@ -20,7 +20,6 @@ public class AjouterAuPanierTask extends AsyncTask<Void, Void, String> {
     private Activity activity;
     private int customerId;
     private int filmId;
-    private static final String JWT = "eyJhbGciOiJIUzI1NiJ9.e30.jg2m4pLbAlZv1h5uPQ6fU38X23g65eXMX8q-SXuIPDg";
 
     public AjouterAuPanierTask(Activity activity, int customerId, int filmId) {
         this.activity = activity;
@@ -37,7 +36,7 @@ public class AjouterAuPanierTask extends AsyncTask<Void, Void, String> {
             urlConnection.setRequestMethod("POST");
             urlConnection.setRequestProperty("Content-Type", "application/json");
             urlConnection.setRequestProperty("Accept", "application/json");
-            urlConnection.setRequestProperty("Authorization", "Bearer " + JWT);
+            urlConnection.setRequestProperty("Authorization", "Bearer " + UrlManager.getJwtToken());
             urlConnection.setRequestProperty("User-Agent", System.getProperty("http.agent"));
             urlConnection.setDoOutput(true);
             urlConnection.setConnectTimeout(5000);
