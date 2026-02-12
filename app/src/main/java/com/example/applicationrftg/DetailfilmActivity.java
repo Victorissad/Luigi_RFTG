@@ -24,11 +24,15 @@ public class DetailfilmActivity extends AppCompatActivity {
     private Film filmActuel = null; // Stocker le film chargé
     private ProgressBar progressBarDetail;
     private ScrollView scrollViewContent;
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailfilm);
+
+        // Initialiser le SessionManager
+        sessionManager = new SessionManager(this);
 
         // Initialiser les vues
         progressBarDetail = findViewById(R.id.progressBarDetail);
@@ -48,7 +52,7 @@ public class DetailfilmActivity extends AppCompatActivity {
         // Appeler le service REST pour récupérer les détails du film
         URL urlAAppeler = null;
         try {
-            urlAAppeler = new URL("http://10.0.2.2:8180/films/" + filmId);
+            urlAAppeler = new URL(UrlManager.getURLConnexion() + "/films/" + filmId);
             new DetailfilmTask(this).execute(urlAAppeler);
         } catch (MalformedURLException mue) {
             Log.d("mydebug",">>>Pour DetailfilmTask - MalformedURLException mue="+mue.toString());
@@ -169,11 +173,11 @@ public class DetailfilmActivity extends AppCompatActivity {
             return;
         }
 
-        // Ajouter le film au panier (principe du cours : Singleton)
-        Panier.getInstance().ajouterFilm(filmActuel);
-
-        Toast.makeText(this, "Film ajouté au panier", Toast.LENGTH_SHORT).show();
-        Log.d("DetailfilmActivity", "Film ajouté au panier: " + filmActuel.getTitle());
+        // Ajouter le film au panier via API
+        int customerId = sessionManager.getCustomerId();
+        int filmIdInt = Integer.parseInt(filmActuel.getFilm_id());
+        Log.d("DetailfilmActivity", "Ajout au panier via API: " + filmActuel.getTitle());
+        new AjouterAuPanierTask(this, customerId, filmIdInt).execute();
 
         // Ouvrir l'écran du panier
         Intent intent = new Intent(this, PanierActivity.class);

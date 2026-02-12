@@ -9,76 +9,71 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class LoginTask extends AsyncTask<URL, Integer, String> {
+/**
+ * AsyncTask pour valider le panier via l'API
+ * POST /cart/checkout avec { "customerId": X }
+ */
+public class ValiderPanierTask extends AsyncTask<Void, Void, String> {
 
-    private LoginActivity activityDAppel;
-    private String jsonBody;
+    private PanierActivity activity;
+    private int customerId;
+    private static final String JWT = "eyJhbGciOiJIUzI1NiJ9.e30.jg2m4pLbAlZv1h5uPQ6fU38X23g65eXMX8q-SXuIPDg";
 
-    public LoginTask(LoginActivity activityDAppel, String jsonBody) {
-        this.activityDAppel = activityDAppel;
-        this.jsonBody = jsonBody;
+    public ValiderPanierTask(PanierActivity activity, int customerId) {
+        this.activity = activity;
+        this.customerId = customerId;
     }
 
     @Override
-    protected String doInBackground(URL... urls) {
-        URL urlAAppeler = urls[0];
-        String resultatAppelRest = "";
+    protected String doInBackground(Void... voids) {
         HttpURLConnection urlConnection = null;
-
         try {
-            // Configurer la connexion
-            String jwt = "eyJhbGciOiJIUzI1NiJ9.e30.jg2m4pLbAlZv1h5uPQ6fU38X23g65eXMX8q-SXuIPDg";
-            urlConnection = (HttpURLConnection) urlAAppeler.openConnection();
+            URL url = new URL(UrlManager.getURLConnexion() + "/cart/checkout");
+            urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("POST");
             urlConnection.setRequestProperty("Content-Type", "application/json");
             urlConnection.setRequestProperty("Accept", "application/json");
-            urlConnection.setRequestProperty("Authorization", "Bearer " + jwt);
+            urlConnection.setRequestProperty("Authorization", "Bearer " + JWT);
             urlConnection.setRequestProperty("User-Agent", System.getProperty("http.agent"));
             urlConnection.setDoOutput(true);
             urlConnection.setConnectTimeout(5000);
             urlConnection.setReadTimeout(5000);
 
-            // Envoyer le JSON dans le corps de la requête
+            String jsonBody = "{\"customerId\":" + customerId + "}";
             OutputStream os = urlConnection.getOutputStream();
             os.write(jsonBody.getBytes("UTF-8"));
             os.flush();
             os.close();
 
-            // Lire la réponse
             int responseCode = urlConnection.getResponseCode();
-            Log.d("mydebug", ">>>Pour LoginTask - responseCode=" + responseCode);
+            Log.d("mydebug", ">>>ValiderPanierTask - responseCode=" + responseCode);
 
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 BufferedReader in = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-                String inputLine;
                 StringBuilder response = new StringBuilder();
-
+                String inputLine;
                 while ((inputLine = in.readLine()) != null) {
                     response.append(inputLine);
                 }
                 in.close();
-
-                resultatAppelRest = response.toString();
-                Log.d("mydebug", ">>>Pour LoginTask - resultat=" + resultatAppelRest);
+                Log.d("mydebug", ">>>ValiderPanierTask - resultat=" + response.toString());
+                return "OK";
             } else {
-                Log.e("mydebug", ">>>Erreur HTTP : " + responseCode);
-                resultatAppelRest = "{\"success\":false}";
+                return "ERREUR";
             }
 
         } catch (Exception e) {
-            Log.e("mydebug", ">>>Pour LoginTask - Exception e=" + e.toString());
-            resultatAppelRest = "{\"success\":false}";
+            Log.e("mydebug", ">>>ValiderPanierTask - Exception: " + e.toString());
+            return "ERREUR";
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
             }
         }
-
-        return resultatAppelRest;
     }
 
     @Override
-    protected void onPostExecute(String result) {
-        activityDAppel.mettreAJourActivityApresAppelRest(result);
+    protected void onPostExecute(String resultat) {
+        activity.onPanierValide(resultat);
     }
 }

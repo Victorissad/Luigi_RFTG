@@ -83,7 +83,7 @@ public class ListefilmsActivity extends AppCompatActivity implements Panier.Pani
 
         URL urlAAppeler = null;
         try {
-            urlAAppeler = new URL("http://10.0.2.2:8180/films");
+            urlAAppeler = new URL(UrlManager.getURLConnexion() + "/films");
             new ListefilmsTask(this).execute(urlAAppeler);
         } catch (MalformedURLException mue) {
             Log.d("mydebug",">>>Pour ListefilmsTask - MalformedURLException mue="+mue.toString());
@@ -158,9 +158,6 @@ public class ListefilmsActivity extends AppCompatActivity implements Panier.Pani
                 textNomFilm.setText(film.getTitle());
                 textTypeFilm.setText("DVD"); // Ou utiliser un champ du film si disponible
 
-                // Vérifier la disponibilité du film
-                verifierDisponibilite(film.getFilm_id(), btnAjouter);
-
                 // Bouton Détail
                 btnDetail.setOnClickListener(v -> {
                     Log.d("mydebug","clic sur détail du film: " + film.getTitle());
@@ -170,12 +167,12 @@ public class ListefilmsActivity extends AppCompatActivity implements Panier.Pani
                     startActivity(intent);
                 });
 
-                // Bouton Ajouter au panier
+                // Bouton Ajouter au panier via API
                 btnAjouter.setOnClickListener(v -> {
-                    Log.d("mydebug","Ajout au panier: " + film.getTitle());
-                    // Ajouter au panier (principe du cours : Singleton)
-                    Panier.getInstance().ajouterFilm(film);
-                    Toast.makeText(ListefilmsActivity.this, "Film ajouté au panier", Toast.LENGTH_SHORT).show();
+                    Log.d("mydebug","Ajout au panier via API: " + film.getTitle());
+                    int customerId = sessionManager.getCustomerId();
+                    int filmIdInt = Integer.parseInt(film.getFilm_id());
+                    new AjouterAuPanierTask(ListefilmsActivity.this, customerId, filmIdInt).execute();
                 });
 
                 return convertView;
@@ -283,19 +280,4 @@ public class ListefilmsActivity extends AppCompatActivity implements Panier.Pani
         finish();
     }
 
-    // Vérifier la disponibilité d'un film
-    private void verifierDisponibilite(String filmId, Button btnAjouter) {
-        URL urlAAppeler = null;
-        try {
-            urlAAppeler = new URL("http://10.0.2.2:8180/inventories/available/film/" + filmId);
-            new CheckAvailabilityTask(btnAjouter, filmId).execute(urlAAppeler);
-        } catch (MalformedURLException mue) {
-            Log.d("mydebug", ">>>Pour CheckAvailabilityTask - MalformedURLException mue=" + mue.toString());
-            // En cas d'erreur, désactiver le bouton par sécurité
-            btnAjouter.setEnabled(false);
-            btnAjouter.setText("Erreur");
-        } finally {
-            urlAAppeler = null;
-        }
-    }
 }

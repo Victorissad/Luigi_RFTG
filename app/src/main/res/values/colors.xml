@@ -3,24 +3,31 @@
     <!-- Couleurs de base -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="retro_cyan">#00FFFF</color>
+    <color name="retro_pink">#FF1493</color>
+    <color name="retro_yellow">#FFD700</color>
+    <color name="retro_orange">#FF6B35</color>
+    <color name="retro_purple">#9B59B6</color>
+    <color name="retro_green">#39FF14</color>
+    <color name="retro_blue">#0080FF</color>
 
-    <!-- Palette rétro années 80 -->
-    <color name="retro_purple">#9D4EDD</color>        <!-- Violet néon -->
-    <color name="retro_pink">#FF006E</color>          <!-- Rose vif -->
-    <color name="retro_cyan">#00D9FF</color>          <!-- Cyan électrique -->
-    <color name="retro_orange">#FF9E00</color>        <!-- Orange rétro -->
-    <color name="retro_blue">#3A0CA3</color>          <!-- Bleu profond -->
-    <color name="retro_dark">#1A1A2E</color>          <!-- Fond sombre -->
-    <color name="retro_light">#16213E</color>         <!-- Fond secondaire -->
-    <color name="retro_yellow">#FFD60A</color>        <!-- Jaune rétro -->
+    <!-- Palette camping été sobre -->
+    <color name="camping_sage">#8B9D83</color>         <!-- Vert sauge -->
+    <color name="camping_terracotta">#C17C5C</color>   <!-- Terracotta -->
+    <color name="camping_sand">#E8D5B7</color>         <!-- Sable -->
+    <color name="camping_forest">#4A5D4B</color>       <!-- Vert forêt -->
+    <color name="camping_sky">#A4C3D2</color>          <!-- Bleu ciel été -->
+    <color name="camping_cream">#F5F0E8</color>        <!-- Crème naturel -->
+    <color name="camping_earth">#8C6D5A</color>        <!-- Terre -->
+    <color name="camping_sunset">#D4A574</color>       <!-- Coucher soleil -->
 
     <!-- Couleurs fonctionnelles -->
-    <color name="primary_color">#9D4EDD</color>       <!-- Violet principal -->
-    <color name="secondary_color">#FF006E</color>     <!-- Rose accent -->
-    <color name="background_dark">#1A1A2E</color>     <!-- Fond principal -->
-    <color name="card_background">#16213E</color>     <!-- Fond des cartes -->
-    <color name="text_primary">#FFFFFF</color>        <!-- Texte principal (blanc pour lisibilité) -->
-    <color name="text_secondary">#00D9FF</color>      <!-- Texte secondaire (cyan) -->
-    <color name="button_gradient_start">#9D4EDD</color>
-    <color name="button_gradient_end">#FF006E</color>
+    <color name="primary_color">#8B9D83</color>        <!-- Vert sauge principal -->
+    <color name="secondary_color">#C17C5C</color>      <!-- Terracotta accent -->
+    <color name="background_dark">#F5F0E8</color>      <!-- Fond crème clair -->
+    <color name="card_background">#FFFFFF</color>      <!-- Fond des cartes blanc -->
+    <color name="text_primary">#2C3E2F</color>         <!-- Texte vert foncé -->
+    <color name="text_secondary">#8C6D5A</color>       <!-- Texte terre -->
+    <color name="button_gradient_start">#8B9D83</color>
+    <color name="button_gradient_end">#4A5D4B</color>
 </resources>

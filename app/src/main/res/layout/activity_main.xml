@@ -1,51 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp">
+    android:orientation="vertical"
+    android:background="@color/background_dark"
+    android:gravity="center"
+    android:padding="32dp">
 
+    <!-- Icône camping -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="⛺"
+        android:textSize="80sp"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Titre principal -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RFTG"
-        android:textSize="32sp"
+        android:text="Bienvenue au"
+        android:textSize="24sp"
+        android:textColor="@color/camping_earth"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ciné Camping"
+        android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:textColor="@color/camping_forest"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginBottom="16dp"/>
 
-    <EditText
-        android:id="@+id/etIdentifiant"
-        android:layout_width="0dp"
+    <!-- Slogan -->
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Identifiant"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"/>
+        android:text="Vos films préférés sous les étoiles"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:textColor="@color/camping_sage"
+        android:gravity="center"
+        android:layout_marginBottom="48dp"/>
 
-    <EditText
-        android:id="@+id/etMdp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Mot de passe"
-        android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/etIdentifiant"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
-
+    <!-- Bouton Explorer -->
     <Button
-        android:id="@+id/btnConnexion"
-        android:layout_width="0dp"
+        android:id="@+id/btnExplorer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Connexion"
-        android:onClick="onConnexionClicked"
-        app:layout_constraintTop_toBottomOf="@id/etMdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"/>
+        android:text="Explorer le catalogue"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="18dp"
+        android:background="@drawable/retro_button_gradient"
+        android:textColor="@color/white"
+        android:layout_marginBottom="16dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Bouton Mon compte -->
+    <Button
+        android:id="@+id/btnMonCompte"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mon compte"
+        android:textSize="16sp"
+        android:padding="18dp"
+        android:background="@drawable/retro_card_background"
+        android:textColor="@color/camping_forest"/>
+
+    <!-- Footer -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Détente • Nature • Cinéma"
+        android:textSize="12sp"
+        android:textColor="@color/camping_earth"
+        android:layout_marginTop="48dp"
+        android:letterSpacing="0.1"/>
+
+</LinearLayout>

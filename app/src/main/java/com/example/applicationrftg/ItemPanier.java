@@ -7,10 +7,18 @@ package com.example.applicationrftg;
 public class ItemPanier {
     private Film film;
     private int quantite;
+    private int rentalId; // ID du rental côté serveur
 
     public ItemPanier(Film film, int quantite) {
         this.film = film;
         this.quantite = quantite;
+        this.rentalId = -1;
+    }
+
+    public ItemPanier(Film film, int quantite, int rentalId) {
+        this.film = film;
+        this.quantite = quantite;
+        this.rentalId = rentalId;
     }
 
     public Film getFilm() {
@@ -27,6 +35,14 @@ public class ItemPanier {
 
     public void setQuantite(int quantite) {
         this.quantite = quantite;
+    }
+
+    public int getRentalId() {
+        return rentalId;
+    }
+
+    public void setRentalId(int rentalId) {
+        this.rentalId = rentalId;
     }
 
     // Calculer le prix total pour cet item

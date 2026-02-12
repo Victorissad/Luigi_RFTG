@@ -1,6 +1,6 @@
 package com.example.applicationrftg;
 
-import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,23 +13,17 @@ import java.util.Locale;
 
 /**
  * Adapter pour afficher les items du panier dans une ListView
- * Principe du cours : BaseAdapter avec ViewHolder pour optimiser les performances
+ * Chaque item correspond à un rental côté serveur (quantité = 1)
+ * La suppression se fait via l'API DELETE /cart/{rentalId}
  */
 public class PanierAdapter extends BaseAdapter {
 
-    private Context context;
+    private PanierActivity activity;
     private ArrayList<ItemPanier> items;
-    private PanierChangeListener listener;
 
-    // Interface pour notifier les changements
-    public interface PanierChangeListener {
-        void onPanierChanged();
-    }
-
-    public PanierAdapter(Context context, ArrayList<ItemPanier> items, PanierChangeListener listener) {
-        this.context = context;
+    public PanierAdapter(PanierActivity activity, ArrayList<ItemPanier> items) {
+        this.activity = activity;
         this.items = items;
-        this.listener = listener;
     }
 
     @Override
@@ -53,7 +47,7 @@ public class PanierAdapter extends BaseAdapter {
 
         // Pattern ViewHolder pour optimiser les performances (principe du cours)
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_panier, parent, false);
+            convertView = LayoutInflater.from(activity).inflate(R.layout.item_panier, parent, false);
             holder = new ViewHolder();
             holder.tvTitre = convertView.findViewById(R.id.tvItemTitre);
             holder.tvType = convertView.findViewById(R.id.tvItemType);
@@ -73,37 +67,22 @@ public class PanierAdapter extends BaseAdapter {
 
         // Remplir les vues avec les données
         holder.tvTitre.setText(film.getTitle());
-        holder.tvType.setText("DVD"); // Ou autre type selon vos données
+        holder.tvType.setText("DVD");
         holder.tvQuantite.setText(String.valueOf(item.getQuantite()));
         holder.tvPrix.setText(String.format(Locale.FRANCE, "%.2f €", item.getPrixTotal()));
 
-        // Bouton diminuer quantité
-        holder.btnDiminuer.setOnClickListener(v -> {
-            int nouvelleQuantite = item.getQuantite() - 1;
-            if (nouvelleQuantite > 0) {
-                Panier.getInstance().modifierQuantite(film.getFilm_id(), nouvelleQuantite);
-            } else {
-                Panier.getInstance().supprimerFilm(film.getFilm_id());
-            }
-            if (listener != null) {
-                listener.onPanierChanged();
-            }
-        });
+        // Masquer les boutons +/- (chaque rental = 1 exemplaire via l'API)
+        holder.btnDiminuer.setVisibility(View.GONE);
+        holder.btnAugmenter.setVisibility(View.GONE);
 
-        // Bouton augmenter quantité
-        holder.btnAugmenter.setOnClickListener(v -> {
-            int nouvelleQuantite = item.getQuantite() + 1;
-            Panier.getInstance().modifierQuantite(film.getFilm_id(), nouvelleQuantite);
-            if (listener != null) {
-                listener.onPanierChanged();
-            }
-        });
-
-        // Bouton supprimer
+        // Bouton supprimer - appel API DELETE /cart/{rentalId}
         holder.btnSupprimer.setOnClickListener(v -> {
-            Panier.getInstance().supprimerFilm(film.getFilm_id());
-            if (listener != null) {
-                listener.onPanierChanged();
+            int rentalId = item.getRentalId();
+            Log.d("PanierAdapter", "Suppression du rental rentalId=" + rentalId);
+            if (rentalId > 0) {
+                new SupprimerDuPanierTask(activity, rentalId).execute();
+            } else {
+                Log.e("PanierAdapter", "rentalId invalide: " + rentalId);
             }
         });
 

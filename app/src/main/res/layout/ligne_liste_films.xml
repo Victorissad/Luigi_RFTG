@@ -19,7 +19,7 @@
             android:id="@+id/imageFilm"
             android:layout_width="60dp"
             android:layout_height="90dp"
-            android:background="@color/retro_purple"
+            android:background="@color/white"
             android:scaleType="centerCrop"
             android:clickable="false"
             android:focusable="false"/>
@@ -48,7 +48,7 @@
             android:text="L'Odyssée"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="@color/retro_cyan"
+            android:textColor="@color/black"
             android:layout_marginBottom="6dp"
             android:clickable="false"
             android:focusable="false"/>
@@ -99,7 +99,23 @@
             android:paddingRight="4dp"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
+            android:layout_marginBottom="4dp"
             android:background="@drawable/retro_button_gradient"/>
+
+        <Button
+            android:id="@+id/btnReserver"
+            android:layout_width="80dp"
+            android:layout_height="32dp"
+            android:text="RÉSERVER"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:background="@drawable/retro_button_gradient"
+            android:visibility="gone"/>
 
     </LinearLayout>
 

@@ -47,43 +47,23 @@ public class Panier {
         }
     }
 
-    // Ajouter un film au panier
+    // Ajouter un film au panier (localement)
     public void ajouterFilm(Film film) {
-        // Vérifier si le film existe déjà dans le panier
-        for (ItemPanier item : items) {
-            if (item.getFilm().getFilm_id().equals(film.getFilm_id())) {
-                // Augmenter la quantité
-                item.setQuantite(item.getQuantite() + 1);
-                notifierChangement();
-                return;
-            }
-        }
-        // Si le film n'existe pas, l'ajouter avec quantité 1
         items.add(new ItemPanier(film, 1));
         notifierChangement();
     }
 
-    // Supprimer un film du panier
-    public void supprimerFilm(String filmId) {
-        for (int i = 0; i < items.size(); i++) {
-            if (items.get(i).getFilm().getFilm_id().equals(filmId)) {
-                items.remove(i);
-                notifierChangement();
-                return;
-            }
-        }
+    // Ajouter un item avec rentalId (depuis l'API)
+    public void ajouterItem(Film film, int rentalId) {
+        items.add(new ItemPanier(film, 1, rentalId));
+        notifierChangement();
     }
 
-    // Modifier la quantité d'un film
-    public void modifierQuantite(String filmId, int nouvelleQuantite) {
-        if (nouvelleQuantite <= 0) {
-            supprimerFilm(filmId);
-            return;
-        }
-
-        for (ItemPanier item : items) {
-            if (item.getFilm().getFilm_id().equals(filmId)) {
-                item.setQuantite(nouvelleQuantite);
+    // Supprimer un item par rentalId (utilisé après suppression via API)
+    public void supprimerParRentalId(int rentalId) {
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getRentalId() == rentalId) {
+                items.remove(i);
                 notifierChangement();
                 return;
             }

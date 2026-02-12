@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">applicationrftg</string>
+
+    <!-- Liste des URLs serveur pour le menu déroulant -->
+    <string-array name="listeURLs">
+        <item>http://10.0.2.2:8180</item>
+        <item>http://rftg.mtb111.com</item>
+    </string-array>
 </resources>

@@ -5,14 +5,14 @@
     android:orientation="vertical"
     android:background="@color/background_dark">
 
-    <!-- En-tête avec titre et panier - Style rétro -->
+    <!-- En-tête avec titre et panier - Style camping -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:padding="16dp"
-        android:background="@color/retro_light">
+        android:background="@color/card_background">
 
         <ImageButton
             android:id="@+id/btnRetour"
@@ -20,7 +20,7 @@
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/ic_menu_revert"
-            android:tint="@color/retro_cyan"
+            android:tint="@color/camping_sage"
             android:contentDescription="Retour"/>
 
         <TextView
@@ -28,14 +28,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="🎬 CATALOGUE"
-            android:textSize="24sp"
+            android:text="🎬 Films d'été"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:textColor="@color/retro_cyan"
-            android:shadowColor="@color/retro_pink"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="4"
+            android:textColor="@color/camping_forest"
             android:gravity="center"/>
 
         <!-- Bouton de déconnexion -->
@@ -46,7 +42,7 @@
             android:layout_marginRight="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/ic_lock_power_off"
-            android:tint="@color/retro_orange"
+            android:tint="@color/camping_terracotta"
             android:onClick="onDeconnexionClicked"
             android:contentDescription="Déconnexion"/>
 
@@ -81,13 +77,13 @@
         </FrameLayout>
     </LinearLayout>
 
-    <!-- Barre de recherche - Style rétro -->
+    <!-- Barre de recherche - Style camping -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:background="@color/retro_light"
+        android:background="@color/card_background"
         android:focusable="true"
         android:focusableInTouchMode="true">
 
@@ -95,10 +91,10 @@
             android:id="@+id/searchBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="🔍 Rechercher un titre..."
+            android:hint="Rechercher un film..."
             android:padding="14dp"
             android:textColor="@color/text_primary"
-            android:textColorHint="@color/retro_cyan"
+            android:textColorHint="@color/camping_earth"
             android:background="@drawable/retro_edittext_background"
             android:inputType="text"
             android:maxLines="1"
@@ -128,7 +124,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:indeterminateTint="@color/retro_cyan"
+            android:indeterminateTint="@color/camping_sage"
             android:visibility="gone"/>
 
     </FrameLayout>
