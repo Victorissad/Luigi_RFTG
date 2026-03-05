@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText etEmail;
     private EditText etPassword;
+    private EditText etURLCustom;
     private Button btnLogin;
     private ProgressBar progressBarLogin;
     private TextView tvErreurLogin;
@@ -53,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         // Initialiser les vues
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
+        etURLCustom = findViewById(R.id.etURLCustom);
         btnLogin = findViewById(R.id.btnLogin);
         progressBarLogin = findViewById(R.id.progressBarLogin);
         tvErreurLogin = findViewById(R.id.tvErreurLogin);
@@ -98,6 +100,13 @@ public class LoginActivity extends AppCompatActivity {
             tvErreurLogin.setText("Veuillez entrer votre mot de passe");
             tvErreurLogin.setVisibility(View.VISIBLE);
             return;
+        }
+
+        // Si une URL custom est saisie, elle prend priorité sur le Spinner
+        String urlCustom = etURLCustom.getText().toString().trim();
+        if (!urlCustom.isEmpty()) {
+            UrlManager.setURLConnexion(urlCustom);
+            Log.d("mydebug", ">>>URL custom utilisée: " + urlCustom);
         }
 
         // Masquer le message d'erreur et afficher le loader

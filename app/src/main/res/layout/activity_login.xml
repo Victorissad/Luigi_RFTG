@@ -88,8 +88,20 @@
         android:layout_height="wrap_content"
         android:padding="12dp"
         android:background="@drawable/retro_edittext_background"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="12dp"
         android:entries="@array/listeURLs" />
+
+    <EditText
+        android:id="@+id/etURLCustom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="URL personnalisée (optionnel)"
+        android:inputType="textUri"
+        android:padding="16dp"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/camping_earth"
+        android:background="@drawable/retro_edittext_background"
+        android:layout_marginBottom="32dp" />
 
     <!-- Bouton de connexion avec gradient camping -->
     <Button
