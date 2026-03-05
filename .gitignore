@@ -13,3 +13,14 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Config locale IDE et Claude
+.idea/.name
+.idea/deploymentTargetSelector.xml
+.idea/misc.xml
+.claude/
+
+# Fichiers de test locaux
+TestMD5.java
+TestMD5.class
+nul
