@@ -1,4 +1,4 @@
-package com.example.applicationrftg;
+package com.example.applicationrftgvis;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 

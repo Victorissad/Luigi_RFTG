@@ -1,4 +1,4 @@
-package com.example.applicationrftg;
+package com.example.applicationrftgvis;
 
 import android.os.Bundle;
 import android.util.Log;

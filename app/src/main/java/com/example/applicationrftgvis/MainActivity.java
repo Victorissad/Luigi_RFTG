@@ -1,8 +1,7 @@
-package com.example.applicationrftg;
+package com.example.applicationrftgvis;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;

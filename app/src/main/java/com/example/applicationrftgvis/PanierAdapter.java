@@ -1,4 +1,4 @@
-package com.example.applicationrftg;
+package com.example.applicationrftgvis;
 
 import android.util.Log;
 import android.view.LayoutInflater;

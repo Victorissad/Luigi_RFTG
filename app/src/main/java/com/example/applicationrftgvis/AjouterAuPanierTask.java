@@ -1,7 +1,9 @@
-package com.example.applicationrftg;
+package com.example.applicationrftgvis;
 
+import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -10,24 +12,26 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * AsyncTask pour valider le panier via l'API
- * POST /cart/checkout avec { "customerId": X }
+ * AsyncTask pour ajouter un film au panier via l'API
+ * POST /cart/add avec { "customerId": X, "filmId": Y }
  */
-public class ValiderPanierTask extends AsyncTask<Void, Void, String> {
+public class AjouterAuPanierTask extends AsyncTask<Void, Void, String> {
 
-    private PanierActivity activity;
+    private Activity activity;
     private int customerId;
+    private int filmId;
 
-    public ValiderPanierTask(PanierActivity activity, int customerId) {
+    public AjouterAuPanierTask(Activity activity, int customerId, int filmId) {
         this.activity = activity;
         this.customerId = customerId;
+        this.filmId = filmId;
     }
 
     @Override
     protected String doInBackground(Void... voids) {
         HttpURLConnection urlConnection = null;
         try {
-            URL url = new URL(UrlManager.getURLConnexion() + "/cart/checkout");
+            URL url = new URL(UrlManager.getURLConnexion() + "/cart/add");
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("POST");
             urlConnection.setRequestProperty("Content-Type", "application/json");
@@ -38,14 +42,15 @@ public class ValiderPanierTask extends AsyncTask<Void, Void, String> {
             urlConnection.setConnectTimeout(5000);
             urlConnection.setReadTimeout(5000);
 
-            String jsonBody = "{\"customerId\":" + customerId + "}";
+            // Envoyer le JSON
+            String jsonBody = "{\"customerId\":" + customerId + ",\"filmId\":" + filmId + "}";
             OutputStream os = urlConnection.getOutputStream();
             os.write(jsonBody.getBytes("UTF-8"));
             os.flush();
             os.close();
 
             int responseCode = urlConnection.getResponseCode();
-            Log.d("mydebug", ">>>ValiderPanierTask - responseCode=" + responseCode);
+            Log.d("mydebug", ">>>AjouterAuPanierTask - responseCode=" + responseCode);
 
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 BufferedReader in = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
@@ -55,14 +60,16 @@ public class ValiderPanierTask extends AsyncTask<Void, Void, String> {
                     response.append(inputLine);
                 }
                 in.close();
-                Log.d("mydebug", ">>>ValiderPanierTask - resultat=" + response.toString());
+                Log.d("mydebug", ">>>AjouterAuPanierTask - resultat=" + response.toString());
                 return "OK";
+            } else if (responseCode == HttpURLConnection.HTTP_NOT_FOUND) {
+                return "INDISPONIBLE";
             } else {
                 return "ERREUR";
             }
 
         } catch (Exception e) {
-            Log.e("mydebug", ">>>ValiderPanierTask - Exception: " + e.toString());
+            Log.e("mydebug", ">>>AjouterAuPanierTask - Exception: " + e.toString());
             return "ERREUR";
         } finally {
             if (urlConnection != null) {
@@ -73,6 +80,12 @@ public class ValiderPanierTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String resultat) {
-        activity.onPanierValide(resultat);
+        if (resultat.equals("OK")) {
+            Toast.makeText(activity, "Film ajouté au panier", Toast.LENGTH_SHORT).show();
+        } else if (resultat.equals("INDISPONIBLE")) {
+            Toast.makeText(activity, "Aucun exemplaire disponible", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(activity, "Erreur lors de l'ajout au panier", Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.applicationrftg;
+package com.example.applicationrftgvis;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -9,11 +9,11 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ListefilmsTask extends AsyncTask<URL,Integer,String> {
+public class DetailfilmTask extends AsyncTask<URL,Integer,String> {
 
-    private volatile ListefilmsActivity screen;  //référence à l'écran
+    private volatile DetailfilmActivity screen;  //référence à l'écran
 
-    public ListefilmsTask(ListefilmsActivity s) {
+    public DetailfilmTask(DetailfilmActivity s) {
         this.screen = s ;
     }
 
@@ -21,6 +21,7 @@ public class ListefilmsTask extends AsyncTask<URL,Integer,String> {
     protected void onPreExecute() {
         //prétraitement de l'appel
     }
+
     @Override
     protected String doInBackground(URL... urls) {
         String sResultatAppel = null;
@@ -74,6 +75,4 @@ public class ListefilmsTask extends AsyncTask<URL,Integer,String> {
         return sResultatAppel;
     }
 
-
 }
- 

@@ -1,4 +1,4 @@
-package com.example.applicationrftg;
+package com.example.applicationrftgvis;
 
 public class LoginRequest {
     private String email;

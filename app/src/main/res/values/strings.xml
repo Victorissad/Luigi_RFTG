@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">applicationrftg</string>
+    <string name="app_name">VIS_RFTG</string>
 
     <!-- Token JWT pour l'authentification API -->
     <string name="jwt_token">eyJhbGciOiJIUzI1NiJ9.e30.jg2m4pLbAlZv1h5uPQ6fU38X23g65eXMX8q-SXuIPDg</string>

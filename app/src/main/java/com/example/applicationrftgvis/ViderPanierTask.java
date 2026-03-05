@@ -1,4 +1,4 @@
-package com.example.applicationrftg;
+package com.example.applicationrftgvis;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -7,24 +7,24 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * AsyncTask pour supprimer un item du panier via l'API
- * DELETE /cart/{rentalId}
+ * AsyncTask pour vider le panier via l'API
+ * DELETE /cart/clear/{customerId}
  */
-public class SupprimerDuPanierTask extends AsyncTask<Void, Void, String> {
+public class ViderPanierTask extends AsyncTask<Void, Void, String> {
 
     private PanierActivity activity;
-    private int rentalId;
+    private int customerId;
 
-    public SupprimerDuPanierTask(PanierActivity activity, int rentalId) {
+    public ViderPanierTask(PanierActivity activity, int customerId) {
         this.activity = activity;
-        this.rentalId = rentalId;
+        this.customerId = customerId;
     }
 
     @Override
     protected String doInBackground(Void... voids) {
         HttpURLConnection urlConnection = null;
         try {
-            URL url = new URL(UrlManager.getURLConnexion() + "/cart/" + rentalId);
+            URL url = new URL(UrlManager.getURLConnexion() + "/cart/clear/" + customerId);
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("DELETE");
             urlConnection.setRequestProperty("Content-Type", "application/json");
@@ -35,7 +35,7 @@ public class SupprimerDuPanierTask extends AsyncTask<Void, Void, String> {
             urlConnection.setReadTimeout(5000);
 
             int responseCode = urlConnection.getResponseCode();
-            Log.d("mydebug", ">>>SupprimerDuPanierTask - responseCode=" + responseCode);
+            Log.d("mydebug", ">>>ViderPanierTask - responseCode=" + responseCode);
 
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 return "OK";
@@ -44,7 +44,7 @@ public class SupprimerDuPanierTask extends AsyncTask<Void, Void, String> {
             }
 
         } catch (Exception e) {
-            Log.e("mydebug", ">>>SupprimerDuPanierTask - Exception: " + e.toString());
+            Log.e("mydebug", ">>>ViderPanierTask - Exception: " + e.toString());
             return "ERREUR";
         } finally {
             if (urlConnection != null) {
@@ -55,6 +55,6 @@ public class SupprimerDuPanierTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String resultat) {
-        activity.onItemSupprime(resultat);
+        activity.onPanierVide(resultat);
     }
 }

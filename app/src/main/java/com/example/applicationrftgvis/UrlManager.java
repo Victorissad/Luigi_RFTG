@@ -1,4 +1,4 @@
-package com.example.applicationrftg;
+package com.example.applicationrftgvis;
 
 /**
  * Classe pour gérer l'URL du serveur
