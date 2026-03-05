@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Film strip - rectangle blanc principal -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M24,38 h60 v32 h-60z"/>
+
+    <!-- Bande gauche noire -->
+    <path
+        android:fillColor="#2C3E2F"
+        android:pathData="M24,38 h11 v32 h-11z"/>
+
+    <!-- Bande droite noire -->
+    <path
+        android:fillColor="#2C3E2F"
+        android:pathData="M73,38 h11 v32 h-11z"/>
+
+    <!-- Perforations gauche (3 trous) -->
+    <path
+        android:fillColor="#8B9D83"
+        android:pathData="M26,42 h7 v5 h-7z"/>
+    <path
+        android:fillColor="#8B9D83"
+        android:pathData="M26,51 h7 v5 h-7z"/>
+    <path
+        android:fillColor="#8B9D83"
+        android:pathData="M26,60 h7 v5 h-7z"/>
+
+    <!-- Perforations droite (3 trous) -->
+    <path
+        android:fillColor="#8B9D83"
+        android:pathData="M75,42 h7 v5 h-7z"/>
+    <path
+        android:fillColor="#8B9D83"
+        android:pathData="M75,51 h7 v5 h-7z"/>
+    <path
+        android:fillColor="#8B9D83"
+        android:pathData="M75,60 h7 v5 h-7z"/>
+
+    <!-- Bouton play (triangle terracotta) centré -->
+    <path
+        android:fillColor="#C17C5C"
+        android:pathData="M44,44 L44,64 L68,54z"/>
+
+</vector>

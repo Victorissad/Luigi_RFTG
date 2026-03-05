@@ -1,5 +1,6 @@
 package com.example.applicationrftgvis;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -262,6 +263,15 @@ public class ListefilmsActivity extends AppCompatActivity implements Panier.Pani
     public void onPanierClicked(View view) {
         Log.d("ListefilmsActivity", "Ouverture du panier");
         startActivity(new Intent(this, PanierActivity.class));
+    }
+
+    public void onQuitterClicked(View view) {
+        new AlertDialog.Builder(this)
+            .setTitle("Quitter")
+            .setMessage("Voulez-vous quitter l'application ?")
+            .setPositiveButton("Oui", (dialog, which) -> finishAffinity())
+            .setNegativeButton("Non", null)
+            .show();
     }
 
     public void onDeconnexionClicked(View view) {

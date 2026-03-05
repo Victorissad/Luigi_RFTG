@@ -28,23 +28,63 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="🎬 Films d'été"
+            android:text="🎬 Films disponible"
             android:textSize="22sp"
             android:textStyle="bold"
             android:textColor="@color/camping_forest"
             android:gravity="center"/>
 
         <!-- Bouton de déconnexion -->
-        <ImageButton
-            android:id="@+id/btnDeconnexion"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
             android:layout_marginRight="8dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_lock_power_off"
-            android:tint="@color/camping_terracotta"
             android:onClick="onDeconnexionClicked"
-            android:contentDescription="Déconnexion"/>
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="4dp">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@android:drawable/ic_lock_power_off"
+                android:tint="@color/camping_terracotta"
+                android:contentDescription="Déconnexion"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Déco."
+                android:textSize="9sp"
+                android:textColor="@color/camping_terracotta"/>
+        </LinearLayout>
+
+        <!-- Bouton Quitter l'application -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginRight="4dp"
+            android:onClick="onQuitterClicked"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="4dp">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:tint="#D32F2F"
+                android:contentDescription="Quitter"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quitter"
+                android:textSize="9sp"
+                android:textColor="#D32F2F"/>
+        </LinearLayout>
 
         <!-- Badge du panier avec compteur - Icône rétro -->
         <FrameLayout

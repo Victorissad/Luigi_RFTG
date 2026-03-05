@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_dark">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="24dp"
-    android:gravity="center"
-    android:background="@color/background_dark">
+    android:gravity="center">
 
     <!-- Logo ou titre de l'application - Style camping été -->
 
@@ -136,3 +140,5 @@
         android:visibility="gone" />
 
 </LinearLayout>
+
+</ScrollView>
